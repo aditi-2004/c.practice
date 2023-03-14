@@ -1,0 +1,160 @@
+import time as t
+user_pin = 4321
+user_balance = 8200000.50
+user_name = "Ms.JERRY"
+print("\t\t\t\t\tWelcome to Deutsche Bank", user_name, end = "\n\n")
+
+choice = 8
+
+while (True):
+    print("\t\t0. Logout and Exit")
+    print("\t\t1. View Account Balance")
+    print("\t\t2. Withdraw Cash")
+    print("\t\t3. Deposit Cash")
+    print("\t\t4. Cash Transfer")
+    print("\t\t5. Cheque Book Request")
+    print("\t\t6. Pre Approved Loans")
+    print("\t\t7. Offers on your Debit/Credit Card")
+    choice = int(input("Enter number to proceed >"))
+    print("\n\n")
+
+    if choice == 0: 
+        print("Exiting...")
+        t.sleep(2)
+        print("You have been logged out. Thank you for banking with us!\n\n")
+        break
+
+    elif choice in (1,2,3,4,5,6,7):
+        num_of_tries = 3
+        while (num_of_tries!=0):
+            input_pin = int(input("Please enter your 4-digit PIN > "))
+
+            if input_pin == user_pin:
+                print("Account auhtorized!\n\n")
+
+                if choice == 1:
+                    print("Loading Account Balance...")
+                    t.sleep(1.5)
+                    print("Your current balance is Rs.", user_balance, end = "\n\n\n")
+                    break
+                elif choice == 2:
+                    print("Opening Cash Withdrawal...")
+                    t.sleep(1.5)
+
+                    while(True):
+                        withdraw_amt = float(input("Enter the amount you wish to withdraw > "))
+
+                        if withdraw_amt>user_balance:
+                            print("Can't withdraw Rs.", withdraw_amt)
+                            print("Please enter a lower amount!")
+                            continue
+
+                        else:
+                            print("Withdrawing Rs.", withdraw_amt)
+                            confirm = input("Confirm? Y/N > ")
+                            if confirm in ('Y', 'y'):
+                                user_balance-=withdraw_amt
+                                print("Amount withdrawn - Rs.", withdraw_amt)
+                                print("Remaining balance - Rs.", user_balance, end = "\n\n\n")
+                                break
+
+                            else:
+                                print("Cancelling transaction...")
+                                t.sleep(1)
+                                print("Transaction Cancelled!\n\n")
+                                break
+
+                    break
+
+                elif choice == 3:
+                    print("Loading Cash Deposit...")
+                    t.sleep(1.5)
+
+                    deposit_amt = float(input("Enter the amount you wish to Deposit > "))
+                    print("Depositing Rs.", deposit_amt)
+                    confirm = input("Confirm? Y/N > ")
+                    if confirm in ('Y', 'y'):
+                        user_balance+=deposit_amt
+                        print("Amount deposited - Rs.", deposit_amt)
+                        print("Updated balance - Rs.", user_balance, end = "\n\n\n")
+                    else:
+                        print("Cancelling Transaction...")
+                        t.sleep(1)
+                        print("Transaction Cancelled!\n\n")
+
+                    break
+
+
+                elif choice == 4:
+                    t.sleep(1.5)
+
+                    while(True):
+                        Account_number = input("Enter Account Number ")
+                        if len(Account_number)>=8:
+                            print("Proceeding.......")
+                        else:
+                            print("Error! Enter valid Account Number... ")
+                            break 
+                        transfer_amt = float(input("Enter the Amount you wish to Transfer > "))
+                        
+
+                        if transfer_amt>user_balance:
+                            print("Can't Transfer Rs.", transfer_amt)
+                            print("Please enter a Lower Amount!")
+                            continue
+
+                        else:    
+                            print("Transfering Rs.", transfer_amt , "to" , Account_number)
+                            confirm = input("Confirm? Y/N > ")
+                            if confirm in ('Y', 'y'):
+                                user_balance-=transfer_amt
+                                print("Amount Transfered - Rs.", transfer_amt, "to" , Account_number)
+                                print("Remaining Balance - Rs.", user_balance, end = "\n\n\n")
+                                break
+
+                            else:
+                                print("Cancelling Transaction...")
+                                t.sleep(1)
+                                print("Transaction Cancelled!\n\n")
+                                break
+
+                        
+                    break
+
+                elif choice == 5:
+                    print("Service Request in Progress")
+                    t.sleep(1)
+                    print("Request Sucessfull")
+                    t.sleep(4)
+                    print("Thanks for Banking With Us")
+                    break
+
+                elif choice == 6:
+                    print("Sorry there are No Offers for Pre Approved Loans")
+                    t.sleep(2)
+                    print("Thanks for Banking With Us")
+                    break
+
+                elif choice == 7:
+                    print("@ Acess to 1300+ lounges across the globe with the global Lounge Collection")
+                    t.sleep(1)
+                    print("@ Earn 3X Membership Rewards Points on all Overseas Spending")
+                    t.sleep(1)
+                    print("@ 10% cashback across Samsung products & services")
+                    t.sleep(1)
+                    print("@ Lowest foreign currency mark-up fee of 2% on all international transactions")
+                    t.sleep(1)
+                    print("@ Fuel-surcharge waiver, 24/7 concierge servi7ce, accidental air death cover, emergency overseas hospitalisation cover, credit liability cover & more")
+                    t.sleep(1)
+                    print("@ 6 international lounge visits in a year via Priority Pass membership & 12 domestic lounge access via Visa/Mastercard Lounge programme")
+                    t.sleep(1)
+                    print("@ Spend Rs.5 lakh or more in an anniversary year and earn 10,000 reward points")
+                    t.sleep(1)
+                    print("@ Free golf games at leading golf courses in India & exclusive access to select golf courses worldwide")
+                    t.sleep(1)
+                    print("@ Complimentary renewal of annual membership benefits on spending Rs. 58 Lakh in a year")
+                    t.sleep(2)
+                    print("FOR MORE OFFERS CONTACT YOUR NEAREST BRANCH")
+                    t.sleep(10)
+
+                    break
